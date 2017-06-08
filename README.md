@@ -20,9 +20,9 @@ Tested on the following combinations, however should work across all versions
 # To install
 npm install
 
-# To run cloudView
+# To run clView
 npm start
 
 # To build an app for MAC
 npm run build
-The application will be in dir CloudView-darwin-x64/ as CloudView.app
+The application will be in dir clView-darwin-x64/ as clView.app

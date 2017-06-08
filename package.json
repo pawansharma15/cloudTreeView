@@ -16,11 +16,11 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pawansharma15/cloudTree.git"
+    "url": "git+https://github.com/pawansharma15/cloudView.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pawansharma15/cloudTree/issues"
+    "url": "https://github.com/pawansharma15/cloudView/issues"
   },
-  "homepage": "https://github.com/pawansharma15/cloudTree#readme"
+  "homepage": "https://github.com/pawansharma15/cloudView#readme"
 }
