@@ -1,4 +1,4 @@
-# cloudTree
+# cloudView
 Will display AWS EC2 - ELB, ELBv2, Instances, Volumes and Network Interfaces in tree view. Besides the AWS Region, Access Key Id and Secret Access Key, it takes the AWS ID of Instance, Volume and Network Interface, where as takes the ELB/ELBv2 name.
 
 Inputs
