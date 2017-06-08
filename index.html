@@ -1,0 +1,84 @@
+<html>
+
+  <head>
+    <title>CloudView</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/js.css"/>
+  </head>
+
+  <body bgcolor=gray>
+
+    <div class="header-container">
+
+      <div class="row">
+
+        <div class="col-sm-8">
+          <h3>
+            <p>
+              <span class="cloud">Cloud</span><span class="view">View</span>
+            </p>
+          </h3>
+        </div>
+
+        <div class="col-sm-4">
+
+          <div class="row">
+            <div class="col-sm-3">Region:</div>
+            <div class="col-sm-5">
+              <input placeholder="Region" class="credentials-textbox" type="text" id="credentials-region" onkeypress="if(event.keyCode == 13) getTree()">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">KeyId:</div>
+            <div class="col-sm-5">
+              <input placeholder="Access Key Id" class="credentials-textbox" type="password" id="credentials-accessKeyId" onkeypress="if(event.keyCode == 13) getTree()">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">AccessKey:</div><div class="col-sm-5">
+              <input placeholder="Secret Access Key" class="credentials-textbox" type="password" id="credentials-secretAccessKey" onkeypress="if(event.keyCode == 13) getTree()">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">ResourceID:</div>
+
+            <div class="col-sm-5">
+              <input id="resource-id" class="credentials-textbox" type="text" placeholder="Resource ID" onkeypress="if(event.keyCode == 13) getTree()">
+            </div>
+
+            <div class="col-sm-4">
+              <button type="button" class="btn btn-xs submit-button" onclick="getTree()">Submit</button>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2 checkbox">
+             <label><input id="is-classic" type="checkbox" checked>Classic</label>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="container-fluid" style="height:100%">
+      <div class="row">
+
+        <div class="col-sm-5 layout-sidebar" id="layout-sidebar"></div>
+
+        <div class="col-sm-7 layout-body" id="layout-body"></div>
+
+      </div>
+    </div>
+
+    <script type='text/javascript' src="./js/main.js"></script>
+
+  </body>
+</html>

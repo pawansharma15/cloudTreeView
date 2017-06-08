@@ -1,0 +1,26 @@
+{
+  "name": "cloudview",
+  "version": "1.0.0",
+  "description": "Tree view for AWS EC2",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . CloudView --platform=darwin --arch=x64 --electronVersion=1.6.2 --overwrite"
+  },
+  "author": "pawan4u_sharma@yahoo.co.in",
+  "dependencies": {
+    "aws-sdk": "^2.49.0",
+    "electron": "^1.6.2",
+    "electron-packager": "^8.7.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pawansharma15/cloudTree.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pawansharma15/cloudTree/issues"
+  },
+  "homepage": "https://github.com/pawansharma15/cloudTree#readme"
+}

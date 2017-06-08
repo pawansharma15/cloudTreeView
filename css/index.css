@@ -1,0 +1,31 @@
+div.header-container {
+  background-color:#7d3c98;
+  color:white;
+  padding:2mm; }
+
+input.credentials-textbox {
+  color:black;
+  border-radius:4px; }
+
+button.submit-button {
+  background-color:white;
+  color:#7d3c98;
+  border-radius:4px; }
+
+div.layout-sidebar, div.layout-body {
+  color:black;
+  height:100%;
+  border-color:#7d3c98;
+  font-size: 90%;
+  overflow-y:scroll; }
+
+h4 {
+  color:#7d3c98; }
+
+span.view {
+  background-color:white;
+  color:#7d3c98;
+  border-radius:10px; }
+
+span.cloud {
+  background-color:#7d3c98; }
