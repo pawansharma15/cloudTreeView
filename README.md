@@ -16,13 +16,13 @@ The application uses Javascript AWS SDK https://github.com/aws/aws-sdk-js to des
 
 # Dependencies
 Tested on the following combinations, however should work across all versions
-1. node > v7.9.0
-2. npm > 4.2.0
+- node > v7.9.0
+- npm > 4.2.0
 
 # To install
 npm install
 
-# To run clView
+# To run viewCloud
 npm start
 
 # To build an app for MAC
