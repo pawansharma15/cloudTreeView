@@ -25,4 +25,5 @@ npm start
 
 # To build an app for MAC
 npm run build
-The application will be in dir viewCloud-darwin-x64/ as viewCloud.app
+
+The application will be available in dir viewCloud-darwin-x64/ as viewCloud.app
