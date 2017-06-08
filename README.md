@@ -12,6 +12,8 @@ Inputs:
 
 The application uses Javascript AWS SDK https://github.com/aws/aws-sdk-js to describe the resources.
 
+![alt text](pictures/cloudViewELBv2.png)
+
 # Dependencies
 Tested on the following combinations, however should work across all versions
 1. node > v7.9.0
