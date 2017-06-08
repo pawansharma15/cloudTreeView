@@ -1,11 +1,11 @@
 {
-  "name": "clView",
+  "name": "viewCloud",
   "version": "1.0.0",
   "description": "Tree view for AWS EC2",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . clView --platform=darwin --arch=x64 --electronVersion=1.6.2 --overwrite"
+    "build": "electron-packager . viewCloud --platform=darwin --arch=x64 --electronVersion=1.6.2 --overwrite"
   },
   "author": "pawan4u_sharma@yahoo.co.in",
   "dependencies": {
@@ -16,11 +16,11 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pawansharma15/cloudView.git"
+    "url": "git+https://github.com/pawansharma15/viewCloud.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pawansharma15/cloudView/issues"
+    "url": "https://github.com/pawansharma15/viewCloud/issues"
   },
-  "homepage": "https://github.com/pawansharma15/cloudView#readme"
+  "homepage": "https://github.com/pawansharma15/viewCloud#readme"
 }

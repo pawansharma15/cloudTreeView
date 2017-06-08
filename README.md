@@ -1,4 +1,4 @@
-# clView
+# viewCloud
 Will display AWS EC2 - ELB, ELBv2, Instances, Volumes and Network Interfaces in tree view. Besides the AWS Region, Access Key Id and Secret Access Key, it takes the AWS Resource ID of Instance, Volume and Network Interface, where as takes the ELB/ELBv2 name.
 
 It only takes one ID and return the full tree.
@@ -25,4 +25,4 @@ npm start
 
 # To build an app for MAC
 npm run build
-The application will be in dir clView-darwin-x64/ as clView.app
+The application will be in dir viewCloud-darwin-x64/ as viewCloud.app
