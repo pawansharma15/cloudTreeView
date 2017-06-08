@@ -10,7 +10,7 @@ Inputs:
 - Resource ID: Instance ID, Volume ID, Network Interface ID or ELB/ELBv2 name
 - Classic Check box: Default checked for ELB, Uncheck if you know the tree top is ELBv2, else try with both checked and unchecked
 
-The application uses Javascript AWS SDK https://github.com/aws/aws-sdk-js to describe the resources.
+The application uses Javascript AWS SDK https://github.com/aws/aws-sdk-js to describe the resources and Electron https://github.com/electron/electron for the application.
 
 ![alt text](pictures/cloudViewELBv2.png)
 
