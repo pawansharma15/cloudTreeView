@@ -1,11 +1,11 @@
 {
-  "name": "seeCloud",
+  "name": "cSeeTwo",
   "version": "1.0.0",
   "description": "Tree view for AWS EC2",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . seeCloud --platform=darwin --arch=x64 --electronVersion=1.6.2 --overwrite"
+    "build": "electron-packager . cSeeTwo --platform=darwin --arch=x64 --electronVersion=1.6.2 --overwrite"
   },
   "author": "pawan4u_sharma@yahoo.co.in",
   "dependencies": {
@@ -16,11 +16,11 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pawansharma15/seeCloud.git"
+    "url": "git+https://github.com/pawansharma15/cSeeTwo.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pawansharma15/seeCloud/issues"
+    "url": "https://github.com/pawansharma15/cSeeTwo/issues"
   },
-  "homepage": "https://github.com/pawansharma15/seeCloud#readme"
+  "homepage": "https://github.com/pawansharma15/cSeeTwo#readme"
 }
