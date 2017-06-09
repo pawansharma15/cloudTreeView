@@ -17,12 +17,9 @@ function getTree(){
 };
 
 function getRequestObject(){
-  var region = "eu-west-1"
-  var accessKeyId = "AKIAIRFZ3YTQPNSZ5CLQ"
-  var secretAccessKey = "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"
-  //var region = view.getElementValueById("credentials-region")
-  //var accessKeyId = view.getElementValueById("credentials-accessKeyId")
-  //var secretAccessKey = view.getElementValueById("credentials-secretAccessKey")
+  var region = view.getElementValueById("credentials-region")
+  var accessKeyId = view.getElementValueById("credentials-accessKeyId")
+  var secretAccessKey = view.getElementValueById("credentials-secretAccessKey")
   var resourceId = view.getElementValueById("resource-id")
   var isClassic = view.getCheckBoxStatusById("is-classic")
   if(!(region && accessKeyId && secretAccessKey && resourceId)){
