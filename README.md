@@ -20,12 +20,15 @@ Tested on the following combinations, however should work across all versions
 - npm > 4.2.0
 
 # To install
+cd cloudTreeView
 npm install
 
 # To run cloudTreeView
+cd cloudTreeView
 npm start
 
 # To build an app for MAC
+cd cloudTreeView
 npm run build
 
 The application will be available in dir cloudTreeView-darwin-x64/ as cloudTreeView.app
