@@ -16,11 +16,11 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pawansharma15/cSeeTwo.git"
+    "url": "git+https://github.com/pawansharma15/cloudTreeView.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pawansharma15/cSeeTwo/issues"
+    "url": "https://github.com/pawansharma15/cloudTreeView"
   },
-  "homepage": "https://github.com/pawansharma15/cSeeTwo#readme"
+  "homepage": "https://github.com/pawansharma15/cloudTreeView#readme"
 }
