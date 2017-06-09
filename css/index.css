@@ -25,7 +25,9 @@ h4 {
 span.view {
   background-color:white;
   color:#7d3c98;
-  border-radius:10px; }
+  border-radius:5px;
+  font-size: 60%; }
 
 span.cloud {
-  background-color:#7d3c98; }
+  background-color:#7d3c98;
+  font-size: 80%;}
