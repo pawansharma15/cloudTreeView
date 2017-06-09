@@ -13,9 +13,6 @@ Inputs:
 ## User permission required
 AmazonEC2ReadOnlyAccess - http://docs.aws.amazon.com/directoryservice/latest/admin-guide/role_ec2_read_only.html
 
-
-The application uses Javascript AWS SDK https://github.com/aws/aws-sdk-js to describe the resources, Electron https://github.com/electron/electron and http://getbootstrap.com/ for the application.
-
 ## An example tree view
 ![alt text](images/cloudTreeView.png)
 An example tree view when the input given was an instance id. See that cloudTreeView has fetched the volumes and eni for the given instances id along with all the children of the top elb node.
@@ -38,3 +35,6 @@ cd cloudTreeView
 npm run build
 
 The application will be available in dir cloudTreeView-darwin-x64/ as cloudTreeView.app
+
+## Note
+The application uses Javascript AWS SDK https://github.com/aws/aws-sdk-js to describe the resources, Electron https://github.com/electron/electron and http://getbootstrap.com/ for the application.
