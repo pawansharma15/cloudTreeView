@@ -1,11 +1,11 @@
 {
-  "name": "cSeeTwo",
+  "name": "cloudTreeView",
   "version": "1.0.0",
   "description": "Tree view for AWS EC2",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . cSeeTwo --platform=darwin --arch=x64 --electronVersion=1.6.2 --overwrite"
+    "build": "electron-packager . cloudTreeView --platform=darwin --arch=x64 --electronVersion=1.6.2 --overwrite"
   },
   "author": "pawan4u_sharma@yahoo.co.in",
   "dependencies": {
