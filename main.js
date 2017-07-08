@@ -7,6 +7,7 @@ app.on("ready",  () => {
   win.on('closed', function () {
     mainWindow = null
   })
+  win.webContents.session.clearStorageData()
   const template = [
     {
       label: 'Edit',
