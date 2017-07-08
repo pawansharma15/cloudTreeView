@@ -153,7 +153,7 @@ function appendDescribedNetworkInterfacesToTree(tree, describedInterfaceObj){
 };
 
 function errorHandler(error){
-  alert(error.stack.substring(0, 100) + " ...")
+  alert(error.stack.substring(0, 1000) + " ...")
   var layoutBody = view.getElementById("layout-body")
   view.removeChildNode(layoutBody)
 };
