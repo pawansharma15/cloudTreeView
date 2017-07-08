@@ -68,10 +68,19 @@ function describeCloudFromElbv2Id(loadBalancerArn, loadBalancerName, instanceIdF
       return describeListeners(tree.elb.LoadBalancerArn)
     })
     .then(function(data){
-      return describeRules(data.Listeners[0].ListenerArn)
+      tree["Listners"] = data.Listeners
+      var rulesPromises = []
+      data.Listeners.map(function(listner){
+        rulesPromises = rulesPromises.concat(describeRules(listner.ListenerArn))
+      })
+      return Promise.all(rulesPromises)
     })
-    .then(function(data){
-      tree["Rules"] = data.Rules
+    .then(function(allRules){
+      var listners = tree.Listners
+      for(var listnersIndex=0;listnersIndex<listners.length;listnersIndex++){
+        var rulesForListner = allRules[listnersIndex]
+        tree.Listners[listnersIndex]["Rules"] = rulesForListner.Rules
+      }
     })
     .then(function(data){
       var targetGroupArns = extractTargetGroupArns(tree)
@@ -81,14 +90,13 @@ function describeCloudFromElbv2Id(loadBalancerArn, loadBalancerName, instanceIdF
       tree["targetGroups"] = data.TargetGroups
     })
     .then(function(data){
-      return describeAutoScalingGroups()
+      return describeAllAutoScalingGroups(tree, instanceIdForAutoExpantion, [], [])
     })
-    .then(function(data){
-      tree = allAutoScalingGroupForTargetGroup(tree, data)
-    })
-    .then(function(data){
-      return classic.describeInstances(tree.allInstanceIds)
-    })
+    .catch(classic.errorHandler)
+};
+
+function describeInstancesFromAutoScaling(tree, instanceIdForAutoExpantion){
+  classic.describeInstances(tree.allInstanceIds)
     .then(function(data){
       tree = addInstanceDetailsToTree(tree, data)
     })
@@ -105,17 +113,18 @@ function describeCloudFromElbv2Id(loadBalancerArn, loadBalancerName, instanceIdF
       tree = addNetworkInterfaceDetailsToTree(tree, data)
       view.addTreeToView(view.ec2Node(tree, instanceIdForAutoExpantion))
     })
-    .catch(classic.errorHandler)
 };
 
 function extractTargetGroupArns(tree){
   var targetGroupArns = []
-  tree.Rules.map(function(rule){
-    rule.Actions.map(function(action){
-      targetGroupArns = targetGroupArns.concat(action.TargetGroupArn)
+  tree.Listners.map(function(listner){
+    listner.Rules.map(function(rule){
+      rule.Actions.map(function(action){
+        targetGroupArns = targetGroupArns.concat(action.TargetGroupArn)
+      })
     })
   })
-  return targetGroupArns
+  return targetGroupArns.filter(getUnique)
 };
 
 function describeAutoScalingInstances(instanceIds){
@@ -125,7 +134,7 @@ function describeAutoScalingInstances(instanceIds){
 
 function describeELBv2(loadBalancerArn, loadBalancerName){
   var params = {}
-  if(loadBalancerArn){params["Names"] = [loadBalancerName]}
+  if(loadBalancerName){params["Names"] = [loadBalancerName]}
   if(loadBalancerArn){params["LoadBalancerArns"] = [loadBalancerArn]}
   var elbv2 = new AWS.ELBv2({apiVersion: '2015-12-01'})
   var describeELB = elbv2.describeLoadBalancers(params)
@@ -149,11 +158,24 @@ function describeTargetGroups(targetGroupArn){
   return elbv2.describeTargetGroups(params).promise()
 };
 
-function describeAutoScalingGroups(autoScalingGroupNames){
-  var params = {}
+function describeAutoScalingGroups(autoScalingGroupNames, NextToken){
+  var params = {MaxRecords: 100}
   if(autoScalingGroupNames) {params["AutoScalingGroupNames"]=autoScalingGroupNames}
+  if(NextToken) {params["NextToken"]=NextToken}
   var autoscaling = new AWS.AutoScaling({apiVersion: '2011-01-01'});
   return autoscaling.describeAutoScalingGroups(params).promise()
+};
+
+function describeAllAutoScalingGroups(tree, instanceIdForAutoExpantion, state, autoScalingGroupNames, NextToken){
+  describeAutoScalingGroups(autoScalingGroupNames, NextToken).then(function(data){
+    state = state.concat(data.AutoScalingGroups)
+    if(data.NextToken){
+      describeAllAutoScalingGroups(tree, instanceIdForAutoExpantion, state, autoScalingGroupNames, data.NextToken)
+    } else {
+      var relevantAutoScalingGroupsInTree = allAutoScalingGroupForTargetGroup(tree, {AutoScalingGroups: state})
+      return describeInstancesFromAutoScaling(relevantAutoScalingGroupsInTree, instanceIdForAutoExpantion)
+    }
+  })
 };
 
 function allAutoScalingGroupForTargetGroup(tree, autoScalingObj){
@@ -195,7 +217,7 @@ function addInstanceDetailsToTree(tree, instancesObj){
         })
       })
     })
-    targetGroup["Instances"] = instances
+    targetGroup["Instances"] = instances.filter(getUnique)
   })
   tree["allVolumeIds"] = allEbsVolumeIds
   tree["allNetworkInterfaceIds"] =  allNetworkIds
@@ -234,4 +256,8 @@ function addNetworkInterfaceDetailsToTree(tree, networkInterfaceObj){
     })
   })
   return tree
+};
+
+function getUnique(value, index, self){
+  return self.indexOf(value) === index;
 };
