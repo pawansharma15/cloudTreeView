@@ -159,15 +159,15 @@ function errorHandler(error){
 };
 
 function getELBForInstance(data, InstanceId){
-  return
-    data.LoadBalancerDescriptions.map(function(elbObj){
-      return
-        elbObj.Instances.map(function(instanceObj){
-          if(instanceObj.InstanceId == InstanceId){
-            return elbName.concat(elbObj.LoadBalancerName)
-          }
-        })
+  var elbName = []
+  data.LoadBalancerDescriptions.map(function(elbObj){
+    elbObj.Instances.map(function(instanceObj){
+      if(instanceObj.InstanceId == InstanceId){
+        elbName = elbName.concat(elbObj.LoadBalancerName)
+      }
     })
+  })
+  return elbName
 };
 
 function getNetworkInterfacesIdsFromTree(tree){
