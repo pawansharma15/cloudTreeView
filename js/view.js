@@ -71,13 +71,32 @@ function addElbChildNode(tree, parentNode, instanceIdForAutoExpantion){
   var ul = createElementWithClassAttributeAndText("ul")
   var elbDetailsHTML = hiddenHTMlForLayoutBody("ELBv2 Details", tree.elb, [])
   var li = createElementWithClassAttributeAndLink("li", "end elb-tree-node", tree.elb.LoadBalancerName, elbDetailsHTML)
-  addRulesNode(tree, li, instanceIdForAutoExpantion)
+  addListnerNode(tree, li, instanceIdForAutoExpantion)
   ul.appendChild(li)
   return parentNode.appendChild(ul)
 };
 
-function addRulesNode(tree, parentNode, instanceIdForAutoExpantion){
-  var rulesObj = tree.Rules
+function addListnerNode(tree, parentNode, instanceIdForAutoExpantion){
+  var listnerObjs = tree.Listners
+  var ul = createElementWithClassAttributeAndText("ul")
+  for(var listnerCounter=0;listnerCounter<listnerObjs.length;listnerCounter++){
+    var listnerObj = listnerObjs[listnerCounter]
+    var last = ""
+    if(listnerCounter == (listnerObjs.length - 1)){
+      last = "end"
+    }
+    console.log(last)
+    var listnerName = "Listner on Port " + listnerObj.Port
+    var listnerDetailsHTML = hiddenHTMlForLayoutBody("Listner Details", listnerObj, ["Rules"])
+    var li = createElementWithClassAttributeAndLink("li", last, listnerName, listnerDetailsHTML)
+    var rulesObjForListner = listnerObj.Rules
+    addRulesNode(tree, rulesObjForListner, li, instanceIdForAutoExpantion)
+    ul.appendChild(li)
+  }
+  return parentNode.appendChild(ul)
+};
+
+function addRulesNode(tree, rulesObj, parentNode, instanceIdForAutoExpantion){
   var ul = createElementWithClassAttributeAndText("ul")
   for(rulesCounter=0;rulesCounter<rulesObj.length;rulesCounter++){
     var ruleObj = rulesObj[rulesCounter]
@@ -86,12 +105,8 @@ function addRulesNode(tree, parentNode, instanceIdForAutoExpantion){
       last = "end"
     }
     var ruleName = getRuleName(ruleObj)
-    var rulesDetailsHTML = hiddenHTMlForLayoutBody(
-      "Listner Rules Details", ruleObj, [])
-    var li =
-      createElementWithClassAttributeAndLink(
-        "li", last, ruleName, rulesDetailsHTML
-      )
+    var rulesDetailsHTML = hiddenHTMlForLayoutBody("Listner Rules Details", ruleObj, [])
+    var li = createElementWithClassAttributeAndLink("li", last, ruleName, rulesDetailsHTML)
     var targetGroupObj = extractTargetGroup(tree, ruleObj)
     addTargetGroupChildNode(targetGroupObj, li, instanceIdForAutoExpantion)
     ul.appendChild(li)
